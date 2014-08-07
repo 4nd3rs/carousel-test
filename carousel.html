@@ -1,0 +1,135 @@
+<html>
+<head></head>
+<style>
+
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+img{
+	max-width:100%;
+}
+h2{
+	line-height: 0;
+	font-size: 1.2em;
+	color: #971e58;
+}
+
+p{
+	color: gray;
+	margin:0;
+}
+.top-image{
+	position:relative;
+	font-size:14px;
+	background-image: url('front-top.jpg');
+	background-position: center;
+	
+}
+
+.top-buttons {
+	padding: 5px 0;
+}
+
+@media (min-width: 500px) {
+
+	.top-image{
+		height:350px;	
+	}
+
+	.top-buttons {
+		position:absolute;
+		bottom: 0px;
+		left:10%;
+		width: 360px;
+		padding: 0;
+	}
+
+	.top-button.active:after{
+		content: '';
+		position: absolute;
+		top: 0;
+		right: -56px;
+		width: 0;
+		height: 0;
+		border: 33px solid rgba(0, 0, 0, 0);
+		border-left: 23px solid #971E58;	
+	}
+}
+
+
+
+.top-buttons a{
+	display:block;
+	text-decoration: none;
+}
+
+.top-button{
+	position:relative;
+	padding:3px 10px;
+	margin:10px;
+	color:white;
+	background:rgba(255,255,255,0.6);
+}
+
+.top-button.active{	
+	background:#971e58;
+}
+.top-button.active h2, .top-button.active p{
+	color:white;
+}
+
+
+
+
+
+
+
+.top-button.active h2{
+
+
+}
+</style>
+<body>
+<div class="top-image">
+	<!--img src="front-top.jpg"/-->
+	<div class="top-buttons">
+		<a href="#1" class="top-button active" data-bg-img="front-top.jpg">
+			<h2>Möt Kerstin Lundström</h2>
+			<p>Hon har levd med Spridd Bröstcancer i fem år och kämpar vidare. </p>
+		</a>
+		<a href="#2" class="top-button" data-bg-img="front-top-2.jpg">
+			<h2>Möt Anna Anderson</h2>
+			<p>Hon har levd med Spridd Bröstcancer i sex år och kämpar vidare </p>
+		</a>
+		<a href="#3" class="top-button" data-bg-img="front-top-3.jpg">
+			<h2>Möt Sanna Johansson</h2>
+			<p>Hon har levd med Spridd Bröstcancer i sju år och kämpar vidare </p>
+		</a>
+	</div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+ $(document).ready(function() {
+ 	$('.top-button').click(
+ 		function (event) {
+ 			if($(window).width() < 500){
+ 				alert('link ' + $(this).attr('href') + ' clicked');
+ 			} else {
+	 			if($(this).hasClass('active')){
+	 				alert('link ' + $(this).attr('href') + ' clicked');
+	 			} else {
+	 				event.preventDefault();
+		 			$('.top-button').removeClass('active');
+		 			$(this).addClass('active');
+		 			var topImage = $(this).attr('data-bg-img');
+		 			$('.top-image').css('background-image','url(' + topImage + ')');
+	 			}
+ 			}
+ 		}
+ 	);
+ });
+</script>
+</body>
+</html>
